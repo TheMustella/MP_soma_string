@@ -1,10 +1,5 @@
-CMakeLists.txt
-GTEST - COMO USAR
-MP_trab1_tdd_string.pdf
-main_tester.o
-makefile
+*.pdf
+*.o
 run
 run_input
-string_soma.o
-testa_string_soma.cpp
 
