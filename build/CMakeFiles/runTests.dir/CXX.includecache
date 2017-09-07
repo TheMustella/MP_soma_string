@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/mustella/Desktop/MP/Trabalho 1/string_soma.cpp
+vector
+-
+iostream
+-
+string
+-
+
+/home/mustella/Desktop/MP/Trabalho 1/testa_string_soma.cpp
+string_soma.cpp
+/home/mustella/Desktop/MP/Trabalho 1/string_soma.cpp
+gtest/gtest.h
+-
+

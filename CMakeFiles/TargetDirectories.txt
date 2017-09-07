@@ -1,0 +1,3 @@
+/home/mustella/Desktop/MP/Trabalho 1/CMakeFiles/edit_cache.dir
+/home/mustella/Desktop/MP/Trabalho 1/CMakeFiles/rebuild_cache.dir
+/home/mustella/Desktop/MP/Trabalho 1/CMakeFiles/runTests.dir
