@@ -1,11 +1,11 @@
 all: clean soma tester #EXECUTAR ESSES COMANDOS ANTES DA LINHA ABAIXO
-	g++ string_soma.o main_tester.o -o run
+	g++ -g string_soma.o main_tester.o -o run
 
 soma: string_soma.cpp #ARQUIVOS DE ENTRADA
-	g++ -c string_soma.cpp
+	g++ -g -c string_soma.cpp
 
 tester: main_tester.cpp #ARQUIVOS DE ENTRADA
-	g++ -c main_tester.cpp
+	g++ -g -c main_tester.cpp
 
 clean:
 	find . -name '*.o' -exec rm '{}' \;
