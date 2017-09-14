@@ -2,6 +2,10 @@
 #include <iostream>
 #include <string>
 
+#define NUMBER 1
+#define COMMA 2
+#define NEWLINE 3
+
 using namespace std;
 
 int soma_string(string string_entrada) {
@@ -39,7 +43,7 @@ int soma_string(string string_entrada) {
 		}
 
 		if (isdigit(charAtual)) { // eh numero
-			if (lastChar == 1) { //eh continuacao do numero anterior
+			if (lastChar == NUMBER) { //eh continuacao do numero anterior
 				numeroAtual *= 10;
 				numeroAtual += charAtual - '0';
 				//cout << "MUDOU 1" << endl;
@@ -47,31 +51,32 @@ int soma_string(string string_entrada) {
 			else { //eh primeiro caracter do numero
 				numeroAtual = charAtual - '0';
 				//cout << "MUDOU 2 " << numeroAtual << endl;
-				lastChar = 1;
+				lastChar = NUMBER;
 			}
 		}
 		if (charAtual == ',') { //eh virgula
 			
-			if (lastChar == 2) { //duas virgulas seguidas
+			if (lastChar == COMMA) { //duas virgulas seguidas
 				return -1;
 			}
 
-			if (lastChar != 3) { //virgula apos numero (para nao fazer push com virgulas apos \n)
+			if (lastChar != NEWLINE) { //virgula apos numero (para nao fazer push com virgulas apos \n)
 				if (numeroAtual < 1001) { //ignorar numero maiores que 1000
 					operandos.push_back(numeroAtual); //inserir operador na lista de operandos
 					elementosLinha++; //ultimo elemento da linha}
 				}
-				lastChar = 2;
+				lastChar = COMMA;
 				int numeroAtual = 0; //zera o numeroAtual para proxima iteracao
 			}
 		}
 		if (charAtual == '\n') { //nova linha
+			char charAnterior = string_entrada[i-1];
 			
-			if (numeroAtual < 1001) { //ignorar numero maiores que 1000
+			if (numeroAtual < 1001 && charAnterior != '\n' && charAnterior != ',') { //ignorar numero maiores que 1000 e sequencias de \n
 				operandos.push_back(numeroAtual); //inserir operador na lista de operandos
 				elementosLinha++; //ultimo elemento da linha}
 			}
-			lastChar = 3;
+			lastChar = NEWLINE;
 			int numeroAtual = 0; //zera o numeroAtual para proxima iteracao
 
 			if (elementosLinha > 3) { //so sao permitidos 3 elmentos por linha
