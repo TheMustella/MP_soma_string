@@ -21,7 +21,7 @@ int soma_string(string string_entrada) {
 			string delimitadores = string_operacoes.substr(0, split);
 			string_operacoes = string_operacoes.substr(split, string_operacoes.length());		
 
-			string separador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-3); //apenas o que esta dentro de []
+			string separador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-3); //apenas o que esta dentro do primeiro []
 		do {	
 			if (separador_atual.length() < 1) {
 				cout << "Delimitador mal formado" << endl;

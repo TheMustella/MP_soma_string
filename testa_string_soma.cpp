@@ -80,6 +80,10 @@ TEST(SomaStringTest, DoisSeparadoresComposto) {
     ASSERT_EQ(9, soma_string("//[;@;][%%%]\n2;@;3%%%4\n")); //Podem haver multiplos delimitadores nessa descricao
 }
 
+TEST(SomaStringTest, TresSeparadoresComposto) { 
+    ASSERT_EQ(9, soma_string("//[;@;][%%%][!!!]\n2;@;3%%%4!!!\n0\n")); //Podem haver multiplos delimitadores nessa descricao
+}
+
 int main(int argc, char **argv) {
     testing::InitGoogleTest(&argc, argv);
     return RUN_ALL_TESTS();
