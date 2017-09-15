@@ -17,19 +17,21 @@ int soma_string(string string_entrada) {
 
 	if (string_operacoes.at(0) == '/' && string_operacoes.at(1) == '/') { //string de entrada comeca com // (especifica delimitador)
 		
-		do {
 			unsigned int split = string_operacoes.find('\n')+1; //onde se separam a linha de delimitador e de operacoes
-			string delimitador_atual = string_operacoes.substr(0, split);
+			string delimitadores = string_operacoes.substr(0, split);
 			string_operacoes = string_operacoes.substr(split, string_operacoes.length());		
-			
-			delimitador_atual = delimitador_atual.substr(delimitador_atual.find('[')+1, delimitador_atual.find(']')-3); //apenas o que esta dentro de []
-			if (delimitador_atual.length() < 1) {
+
+			string separador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-3); //apenas o que esta dentro de []
+		do {	
+			if (separador_atual.length() < 1) {
 				cout << "Delimitador mal formado" << endl;
 				return -1; //delimitador mal formado
 			}
 
-			separadores.push_back(delimitador_atual); //insere separador atual
-		} while (string_operacoes.at(0) == '/' && string_operacoes.at(1) == '/'); //para cada separador definido
+			separadores.push_back(separador_atual); //insere separador atual no vetor
+			delimitadores = delimitadores.substr(delimitadores.find(']')+1, delimitadores.length()); //limpa o primeiro delimitador da string
+			separador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-1); //apenas o que esta dentro de []
+		} while (delimitadores.at(0) == '['); //para cada separador definido
 
 	}
 
