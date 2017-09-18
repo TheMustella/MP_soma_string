@@ -1,3 +1,9 @@
+/*
+Nome: Jonas Prado Soares
+Matricula: 13/0117277
+Execução da função soma_string(string string_entrada) sem uso de framework de teste
+*/
+
 #include "string_soma.hpp"
 #include <iostream>
 #include <string>

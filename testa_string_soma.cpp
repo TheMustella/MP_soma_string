@@ -1,3 +1,10 @@
+/*
+Nome: Jonas Prado Soares
+Matricula: 13/0117277
+Implementação de testes para a função soma_string(string string_entrada)
+Utilização do Framework Gtest
+*/
+
 // <arquivos testados>.cpp
 #include "string_soma.cpp"
 #include <gtest/gtest.h> //VERIFICAR

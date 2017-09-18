@@ -1,3 +1,10 @@
+/*
+Nome: Jonas Prado Soares
+Matricula: 13/0117277
+Implementação da função soma_string(string string_entrada)
+Utilização do Framework Gtest
+*/
+
 #include <vector>
 #include <iostream>
 #include <string>
@@ -15,32 +22,36 @@ int soma_string(string string_entrada) {
 	vector<string> separadores; //vetor de separadores
 	separadores.push_back(","); //virgula eh o primeiro separador valido
 
+	//IDENTIFICAR SEPARADORES INSERIDOS NA ENTRADA
+
 	if (string_operacoes.at(0) == '/' && string_operacoes.at(1) == '/') { //string de entrada comeca com // (especifica delimitador)
 		
 			unsigned int split = string_operacoes.find('\n')+1; //onde se separam a linha de delimitador e de operacoes
 			string delimitadores = string_operacoes.substr(0, split);
 			string_operacoes = string_operacoes.substr(split, string_operacoes.length());		
 
-			string separador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-3); //apenas o que esta dentro do primeiro []
+			string delimitador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-3); //apenas o que esta dentro do primeiro []
 		do {	
-			if (separador_atual.length() < 1) {
+			if (delimitador_atual.length() < 1) {
 				cout << "Delimitador mal formado" << endl;
 				return -1; //delimitador mal formado
 			}
 
-			separadores.push_back(separador_atual); //insere separador atual no vetor
+			separadores.push_back(delimitador_atual); //insere separador atual no vetor
 			delimitadores = delimitadores.substr(delimitadores.find(']')+1, delimitadores.length()); //limpa o primeiro delimitador da string
-			separador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-1); //apenas o que esta dentro de []
+			delimitador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-1); //apenas o que esta dentro de []
 		} while (delimitadores.at(0) == '['); //para cada separador definido
 
 	}
+
+	//LEITURA DE SEPARADORES PRONTA, FAZER A PILHA DE OPERANDOS
 
     if (string_operacoes.find("-") != string::npos) { //se houverem numeros negativos
     		cout << "Numeros negativos" << endl;
     		return -1;
     }
 
-    if (string_operacoes.at(0) == ',') { //inicia com virgula
+    if (!isdigit(string_operacoes.at(0))) { //nao inicia com numero
     		cout << "Inicia com virgula" << endl;
     		return -1;
     }
@@ -75,55 +86,56 @@ int soma_string(string string_entrada) {
 				//cout << "MUDOU 2 " << numeroAtual << endl;
 				lastChar = NUMBER;
 			}
-		} else {
-		if (charAtual == '\n') { //nova linha
-			char charAnterior = string_operacoes[i-1];
-			
-			if (numeroAtual < 1001 && lastChar == NUMBER) { //se o caracter anterior era um numero (ignorar numero maiores que 1000 e sequencias de \n)
-				operandos.push_back(numeroAtual); //inserir operador na lista de operandos
-				elementosLinha++; //ultimo elemento da linha}
-			}
-			lastChar = NEWLINE;
-			int numeroAtual = 0; //zera o numeroAtual para proxima iteracao
-
-			if (elementosLinha > 3) { //so sao permitidos 3 elmentos por linha
-				cout << "3 ou mais elementos numa linha" << endl;
-				return -1; 
-			}
-			else { //a linha eh valida; iniciar a proxima
-				elementosLinha = 0; //zera o numero de elementos da nova linha
-			}
 		}
-		else {
-			char proxChar = string_operacoes[i+1];
-			separador_lido += charAtual;
-			while (!(isdigit(proxChar) || proxChar == '\n')) { //ate que charAtual termine de percorrer o separador { //inicio de separador encontrado; avancar ate finalizar o separador
-				i++; //avancar no vetor de caracteres
-				charAtual = string_operacoes[i]; //atualizar charAtual
-				proxChar = string_operacoes[i+1];
+			else { //nao eh numero
+			if (charAtual == '\n') { //eh nova linha
+				char charAnterior = string_operacoes[i-1];
+				
+				if (numeroAtual < 1001 && lastChar == NUMBER) { //se o caracter anterior era um numero (ignorar numero maiores que 1000 e sequencias de \n)
+					operandos.push_back(numeroAtual); //inserir operador na lista de operandos
+					elementosLinha++; //ultimo elemento da linha}
+				}
+				lastChar = NEWLINE;
+				int numeroAtual = 0; //zera o numeroAtual para proxima iteracao
+
+				if (elementosLinha > 3) { //so sao permitidos 3 elmentos por linha
+					cout << "3 ou mais elementos numa linha" << endl;
+					return -1; 
+				}
+				else { //a linha eh valida; iniciar a proxima
+					elementosLinha = 0; //zera o numero de elementos da nova linha
+				}
+			}
+			else { //eh separador
+				char proxChar = string_operacoes[i+1];
 				separador_lido += charAtual;
-			}
+				while (!(isdigit(proxChar) || proxChar == '\n')) { //ate que charAtual termine de percorrer o separador { //inicio de separador encontrado; avancar ate finalizar o separador
+					i++; //avancar no vetor de caracteres
+					charAtual = string_operacoes[i]; //atualizar charAtual
+					proxChar = string_operacoes[i+1];
+					separador_lido += charAtual;
+				}
 
-			if (lastChar == NUMBER) { //separador apos numero
-				if (find(separadores.begin(), separadores.end(), separador_lido) == separadores.end()) { //separador nao esta listado
-					cout << "Separador nao listado" << endl;
-					return -1;
-				}
-				else { //separacao entre numeros
-					if (numeroAtual < 1001) { //ignorar numero maiores que 1000
-						operandos.push_back(numeroAtual); //inserir operador na lista de operandos
-						elementosLinha++; //ultimo elemento da linha}
+				if (lastChar == NUMBER) { //separador apos numero
+					if (find(separadores.begin(), separadores.end(), separador_lido) == separadores.end()) { //separador nao esta listado
+						cout << "Separador nao listado" << endl;
+						return -1;
 					}
-					lastChar = SEPARATOR;
-					separador_lido.clear(); //limpar string de separador lido
-					numeroAtual = 0; //zera o numeroAtual para proxima iteracao
+					else { //separacao entre numeros
+						if (numeroAtual < 1001) { //ignorar numero maiores que 1000
+							operandos.push_back(numeroAtual); //inserir operador na lista de operandos
+							elementosLinha++; //ultimo elemento da linha}
+						}
+						lastChar = SEPARATOR;
+						separador_lido.clear(); //limpar string de separador lido
+						numeroAtual = 0; //zera o numeroAtual para proxima iteracao
+					}
 				}
 			}
-		}
 		}
 	}
 
-	//LEITURA DE CARACTERES FINALIZADA; FAZER A CONTA
+	//LEITURA DE OPERANDOS FINALIZADA; EXECUTAR A SOMA
 
 	int resultadoSoma = 0;
 	while (!operandos.empty()) { //enquanto houver elementos no vetor
