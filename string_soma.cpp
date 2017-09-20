@@ -33,7 +33,7 @@ int soma_string(string string_entrada) {
 			string delimitador_atual = delimitadores.substr(delimitadores.find('[')+1, delimitadores.find(']')-3); //apenas o que esta dentro do primeiro []
 		do {	
 			if (delimitador_atual.length() < 1) {
-				cout << "Delimitador mal formado" << endl;
+				//cout << "Delimitador mal formado" << endl;
 				return -1; //delimitador mal formado
 			}
 
@@ -47,22 +47,22 @@ int soma_string(string string_entrada) {
 	//LEITURA DE SEPARADORES PRONTA, FAZER A PILHA DE OPERANDOS
 
     if (string_operacoes.find("-") != string::npos) { //se houverem numeros negativos
-    		cout << "Numeros negativos" << endl;
+    		//cout << "Numeros negativos" << endl;
     		return -1;
     }
 
     if (!isdigit(string_operacoes.at(0))) { //nao inicia com numero
-    		cout << "Inicia com virgula" << endl;
+    		//cout << "Inicia com virgula" << endl;
     		return -1;
     }
 
     if (string_operacoes.at(string_operacoes.length()-1) != '\n') { //termina sem '\n'
-    	cout << "Termina sem '\n'" << endl;
+    	//cout << "Termina sem '\n'" << endl;
     	return -1;
     }
 
     if (!isdigit(string_operacoes.at(string_operacoes.length()-2))) { //o ultimo elemento (penultimo char) nao eh numero
-    	cout << "Ultimo elemento nao eh numero" << endl;
+    	//cout << "Ultimo elemento nao eh numero" << endl;
     	return -1;
     }
 
@@ -99,7 +99,7 @@ int soma_string(string string_entrada) {
 				int numeroAtual = 0; //zera o numeroAtual para proxima iteracao
 
 				if (elementosLinha > 3) { //so sao permitidos 3 elmentos por linha
-					cout << "3 ou mais elementos numa linha" << endl;
+					//cout << "3 ou mais elementos numa linha" << endl;
 					return -1; 
 				}
 				else { //a linha eh valida; iniciar a proxima
@@ -118,7 +118,7 @@ int soma_string(string string_entrada) {
 
 				if (lastChar == NUMBER) { //separador apos numero
 					if (find(separadores.begin(), separadores.end(), separador_lido) == separadores.end()) { //separador nao esta listado
-						cout << "Separador nao listado" << endl;
+						//cout << "Separador nao listado" << endl;
 						return -1;
 					}
 					else { //separacao entre numeros

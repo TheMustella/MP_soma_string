@@ -1,7 +1,7 @@
 CFLAGS = -g -O0 --coverage
 
 all: clean soma tester #EXECUTAR ESSES COMANDOS ANTES DA LINHA ABAIXO
-	g++ $(CFLAGS) string_soma.o main_tester.o -o run 
+	g++ $(CFLAGS) string_soma.o main_tester.o -o testa_soma_string_stdin
 
 soma: string_soma.cpp #ARQUIVOS DE ENTRADA
 	g++ $(CFLAGS) -c string_soma.cpp
