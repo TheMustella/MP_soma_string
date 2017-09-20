@@ -1,22 +1,22 @@
 Determining if the pthread_create exist failed with the following output:
 Change Dir: /home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_e178a/fast"
-/usr/bin/make -f CMakeFiles/cmTC_e178a.dir/build.make CMakeFiles/cmTC_e178a.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_60083/fast"
+/usr/bin/make -f CMakeFiles/cmTC_60083.dir/build.make CMakeFiles/cmTC_60083.dir/build
 make[1]: Entering directory '/home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_e178a.dir/CheckSymbolExists.c.o
-/usr/bin/cc     -o CMakeFiles/cmTC_e178a.dir/CheckSymbolExists.c.o   -c "/home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c"
-Linking C executable cmTC_e178a
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_e178a.dir/link.txt --verbose=1
-/usr/bin/cc       CMakeFiles/cmTC_e178a.dir/CheckSymbolExists.c.o  -o cmTC_e178a -rdynamic 
-CMakeFiles/cmTC_e178a.dir/CheckSymbolExists.c.o: In function `main':
+Building C object CMakeFiles/cmTC_60083.dir/CheckSymbolExists.c.o
+/usr/bin/cc     -o CMakeFiles/cmTC_60083.dir/CheckSymbolExists.c.o   -c "/home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c"
+Linking C executable cmTC_60083
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_60083.dir/link.txt --verbose=1
+/usr/bin/cc       CMakeFiles/cmTC_60083.dir/CheckSymbolExists.c.o  -o cmTC_60083 -rdynamic 
+CMakeFiles/cmTC_60083.dir/CheckSymbolExists.c.o: In function `main':
 CheckSymbolExists.c:(.text+0x16): undefined reference to `pthread_create'
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_e178a.dir/build.make:97: recipe for target 'cmTC_e178a' failed
-make[1]: *** [cmTC_e178a] Error 1
+CMakeFiles/cmTC_60083.dir/build.make:97: recipe for target 'cmTC_60083' failed
+make[1]: *** [cmTC_60083] Error 1
 make[1]: Leaving directory '/home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_e178a/fast' failed
-make: *** [cmTC_e178a/fast] Error 2
+Makefile:126: recipe for target 'cmTC_60083/fast' failed
+make: *** [cmTC_60083/fast] Error 2
 
 File /home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp/CheckSymbolExists.c:
 /* */
@@ -36,20 +36,20 @@ int main(int argc, char** argv)
 Determining if the function pthread_create exists in the pthreads failed with the following output:
 Change Dir: /home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp
 
-Run Build Command:"/usr/bin/make" "cmTC_0784e/fast"
-/usr/bin/make -f CMakeFiles/cmTC_0784e.dir/build.make CMakeFiles/cmTC_0784e.dir/build
+Run Build Command:"/usr/bin/make" "cmTC_18dc5/fast"
+/usr/bin/make -f CMakeFiles/cmTC_18dc5.dir/build.make CMakeFiles/cmTC_18dc5.dir/build
 make[1]: Entering directory '/home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp'
-Building C object CMakeFiles/cmTC_0784e.dir/CheckFunctionExists.c.o
-/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_0784e.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
-Linking C executable cmTC_0784e
-/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_0784e.dir/link.txt --verbose=1
-/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_0784e.dir/CheckFunctionExists.c.o  -o cmTC_0784e -rdynamic -lpthreads 
+Building C object CMakeFiles/cmTC_18dc5.dir/CheckFunctionExists.c.o
+/usr/bin/cc    -DCHECK_FUNCTION_EXISTS=pthread_create   -o CMakeFiles/cmTC_18dc5.dir/CheckFunctionExists.c.o   -c /usr/share/cmake-3.5/Modules/CheckFunctionExists.c
+Linking C executable cmTC_18dc5
+/usr/bin/cmake -E cmake_link_script CMakeFiles/cmTC_18dc5.dir/link.txt --verbose=1
+/usr/bin/cc   -DCHECK_FUNCTION_EXISTS=pthread_create    CMakeFiles/cmTC_18dc5.dir/CheckFunctionExists.c.o  -o cmTC_18dc5 -rdynamic -lpthreads 
 /usr/bin/ld: cannot find -lpthreads
 collect2: error: ld returned 1 exit status
-CMakeFiles/cmTC_0784e.dir/build.make:97: recipe for target 'cmTC_0784e' failed
-make[1]: *** [cmTC_0784e] Error 1
+CMakeFiles/cmTC_18dc5.dir/build.make:97: recipe for target 'cmTC_18dc5' failed
+make[1]: *** [cmTC_18dc5] Error 1
 make[1]: Leaving directory '/home/mustella/Desktop/MP/Trabalho 1/build/CMakeFiles/CMakeTmp'
-Makefile:126: recipe for target 'cmTC_0784e/fast' failed
-make: *** [cmTC_0784e/fast] Error 2
+Makefile:126: recipe for target 'cmTC_18dc5/fast' failed
+make: *** [cmTC_18dc5/fast] Error 2
 
 
